@@ -10,9 +10,9 @@ RUN ./mvnw package
 
 FROM eclipse-temurin:17-jdk-alpine as runtime
 
-WORKDIR /runcode
-COPY --from=builder /app/target/*.jar /runcode
-RUN chmod a+rx /runcode -R
+WORKDIR /code
+COPY --from=builder /app/target/*.jar /code
+RUN chmod a+rx /code -R
 
 #Make sure your CMD is:  java -jar code/*.jar
 CMD ["java", "-jar", "/code/spring-petclinic-3.1.0-SNAPSHOT.jar"]
